@@ -1,38 +1,138 @@
-.App {
-  text-align: center;
+/* App.css */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  height: 100%;
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Tipis biru di atas */
+.cloud-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #87ceeb, #ff7000);
+  z-index: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Gelombang animasi di bawah */
+.wave-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  z-index: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wave-bottom path {
+  animation: waveMove 12s linear infinite;
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 1;
+  padding: 16px;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  display: flex;
   align-items: center;
+  background-color: #ffffffdd;
+  border-radius: 12px;
+  padding: 15px 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+/* Accent bar kiri */
+.header .accent {
+  width: 6px;
+  height: 50px;
+  background-color: #ff7000;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+/* Chart Section */
+.chart-card {
+  background-color: #ffffffdd;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  /* occupy full available width */
+  max-width: none;
+  width: calc(100% - 32px); /* account for container horizontal padding */
+  margin-inline: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Filter Section */
+.filter-card {
+  background-color: #ffffffdd;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+  max-width: none;
+  width: calc(100% - 32px);
+  margin-inline: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Buttons */
+.btn-primary {
+  background-color: #0288d1;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(2,136,209,0.3);
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #0277bd;
+}
+
+/* Inputs & Select */
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fafafa;
+}
+
+/* Checkbox Label */
+.checkbox-label {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* Responsive chart text */
+.recharts-cartesian-axis-tick-value {
+  fill: #1a1a4b !important;
+  font-size: 12px;
 }
